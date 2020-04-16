@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const [data, setData] = useState();
+  const [numClicks, setNumClicks] = useState(0);
   const { register, errors, handleSubmit, reset } = useForm({
     mode: "onBlur"
   });
@@ -17,11 +18,11 @@ const ContactForm = () => {
           <label htmlFor="firstName">First Name*</label>
           <input
             name="firstName"
-            placeholder="bill"
-            ref={register({ required: true, maxLength: 3 })}
+            placeholder="John"
+            ref={register({ required: true, maxLength: 6 })}
           />
           {errors.firstName && (
-            <p>Looks like there was an error: {errors.firstName.type}</p>
+            <p>Looks like there was an error, First Name {errors.firstName.type}</p>
           )}
         </div>
 
@@ -29,21 +30,22 @@ const ContactForm = () => {
           <label htmlFor="lastName">Last Name*</label>
           <input
             name="lastName"
-            placeholder="luo"
+            placeholder="Doe"
             ref={register({ required: true })}
           />
           {errors.lastName && (
-            <p>Looks like there was an error: {errors.lastName.type}</p>
+            <p>Looks like there was an error, Last Name {errors.lastName.type}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="email" placeholder="bluebill1049@hotmail.com">
-            Email*
-          </label>
-          <input name="email" ref={register({ required: true })} />
+          <label htmlFor="email" >Email*</label> 
+          <input 
+          name="email" 
+          placeholder="johndoe@hotmail.com"
+          ref={register({ required: true })} />
           {errors.email && (
-            <p>Looks like there was an error: {errors.email.type}</p>
+            <p>Looks like there was an error, Email {errors.email.type}</p>
           )}
         </div>
         <div>
